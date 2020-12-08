@@ -5,7 +5,7 @@ export interface VolumeInfo {
   subtitle: string;
   authors: Array<string>;
   publisher: string;
-  publishDate: string;
+  publishedDate: string;
   description: string;
   industryIdentifiers: Array<IndustryIdentifier>;
   readingModes: { [ index: string ]: boolean };

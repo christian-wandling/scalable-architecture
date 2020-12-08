@@ -1,6 +1,5 @@
 import { VolumeInfo } from './volume-info';
 import { IndustryIdentifier } from '@book/model/industry-identifier';
-import * as moment from 'moment';
 
 export interface Book {
   id: string;
@@ -14,7 +13,7 @@ export class BookViewModel {
     public authors: Array<string>,
     public title: string,
     public publisher: string,
-    public publishDate: moment.Moment,
+    public publishedDate: string,
     public imgSrc: string,
     public description: string,
     public pageCount: number,
@@ -29,7 +28,7 @@ export const createBookViewModel = (book: Book) => new BookViewModel(
   book.volumeInfo?.authors || [ 'Unknown' ],
   book.volumeInfo?.title || 'Unknown',
   book.volumeInfo?.publisher || 'Unknown',
-  book.volumeInfo?.publishDate && moment(book.volumeInfo.publishDate),
+  book.volumeInfo?.publishedDate,
   book.volumeInfo?.imageLinks?.thumbnail || '',
   book.volumeInfo?.description,
   book.volumeInfo?.pageCount,

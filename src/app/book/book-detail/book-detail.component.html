@@ -7,15 +7,15 @@
     <mat-card-subtitle>{{book.authors}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <div>{{ book.description }}</div>
-    <hr/>
     <div>Language: {{ book.language }}</div>
     <div>Publisher: {{ book.publisher }}</div>
-    <div>Published: {{ book.publishDate | date:'YYYY' }}</div>
+    <div>Published: {{ book.publishedDate }}</div>
     <div>Pages: {{ book.pageCount }}</div>
     <div *ngFor="let identifier of book.industryIdentifiers">
       {{ identifier.type | titlecase }}: {{ identifier.identifier }}
     </div>
+    <hr/>
+    <div>{{ book.description }}</div>
   </mat-card-content>
 </mat-card>
 

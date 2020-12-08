@@ -8,7 +8,7 @@ const tableDef: TableDef = {
     { key: 'authors', label: 'Authors', type: PropType.StringArray },
     { key: 'title', label: 'Title' },
     { key: 'publisher', label: 'Publisher' },
-    { key: 'publishDate', label: 'Date', type: PropType.Date },
+    { key: 'publishedDate', label: 'Date'},
   ]
 };
 

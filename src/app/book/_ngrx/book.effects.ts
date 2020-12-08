@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as BookActions from './book.actions';
-import { concatMap, map, switchMap } from 'rxjs/operators';
+import { concatMap, filter, map, switchMap } from 'rxjs/operators';
 import { BookHttpService } from '@book/book-http.service';
 import { BookNormalizrService } from '@book/book-normalizr.service';
 import { getIdFromUrl } from '@core/utils/ngrx-utils';
@@ -13,7 +13,7 @@ export class BookEffects {
   searchBooks$ = createEffect(() => this.actions$
     .pipe(
       ofType(BookActions.searchBooks),
-      map(payload => this.http.searchBooks(payload.term)),
+      switchMap(payload => this.http.searchBooks(payload.term)),
       map(res => this.normalizr.normalizeBooks(res)),
       concatMap(res => [
         BookActions.loadBooks({ books: res.entities.books })
@@ -24,6 +24,7 @@ export class BookEffects {
   getFullBookModel = createEffect(() => this.actions$
     .pipe(
       ofType(BookActions.setSelectedBook),
+      filter(payload => !!payload.id),
       switchMap(payload => this.http.getOne('volumes', payload.id)),
       map(res => this.normalizr.normalizeBook(res)),
       concatMap(res => [
