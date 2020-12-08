@@ -1,0 +1,11 @@
+<mat-card *ngIf="(artist$ | async) as artist">
+  <mat-card-header>
+    <mat-card-title>{{artist.name}}</mat-card-title>
+    <mat-card-subtitle>{{artist.origin}}</mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
+<app-release-list></app-release-list>
+
+
+
+

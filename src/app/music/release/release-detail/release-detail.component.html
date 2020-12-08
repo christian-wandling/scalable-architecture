@@ -1,0 +1,13 @@
+<ng-container *ngIf="(release$ | async) as release">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{release.title}}</mat-card-title>
+      <mat-card-subtitle *ngIf="(artist$ | async) as artist">{{artist.name}}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-tab-group *ngIf="release.media">
+    <mat-tab *ngFor="let medium of release.media" [label]="medium.format">
+      <app-release-track-list [tracks]="medium.tracks"></app-release-track-list>
+    </mat-tab>
+  </mat-tab-group>
+</ng-container>

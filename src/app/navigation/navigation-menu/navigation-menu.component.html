@@ -1,0 +1,10 @@
+<mat-list>
+  <mat-list-item *ngFor="let navigationItem of navigationItems"
+                 routerLinkActive="selected"
+                 [routerLink]="navigationItem.route">
+
+    <mat-icon>{{ navigationItem.icon }}</mat-icon>
+    <div class="navigation__label" matLine>{{ navigationItem.label }}</div>
+
+  </mat-list-item>
+</mat-list>

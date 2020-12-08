@@ -1,0 +1,2 @@
+<app-search (value)="search($event)"></app-search>
+<app-list [tableDef]="tableDef" [data]="books$ | async" (select)="goToDetails($event)"></app-list>

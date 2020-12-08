@@ -1,0 +1,29 @@
+:host {
+  ::ng-deep {
+    .mat-drawer-content {
+      display: flex;
+      flex-flow: column;
+      overflow: hidden;
+    }
+  }
+}
+
+mat-drawer-container {
+  display: block;
+  position: relative;
+  height: 100%;
+}
+
+mat-drawer {
+  width: 200px;
+}
+
+app-navigation-menu {
+  display: block;
+  margin-top: 40px;
+}
+
+.close-button {
+  position: absolute;
+  right: 0;
+}

@@ -1,0 +1,20 @@
+<mat-drawer-container autosize>
+  <mat-drawer #drawer mode="side">
+    <button mat-icon-button class="close-button" (click)="drawer.toggle()">
+      <mat-icon>
+        <ng-container *ngIf="drawer.opened">close</ng-container>
+      </mat-icon>
+    </button>
+
+    <app-navigation-menu></app-navigation-menu>
+  </mat-drawer>
+
+  <button mat-icon-button (click)="drawer.toggle()">
+    <mat-icon>
+      <ng-container *ngIf="!drawer.opened">menu</ng-container>
+    </mat-icon>
+  </button>
+
+  <ng-content></ng-content>
+
+</mat-drawer-container>

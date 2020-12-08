@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  overflow-y: hidden;
+  padding: 20px;
+}
+
+mat-tab-group {
+  margin-top: 20px;
+}
+
+app-release-list {
+  flex: 1;
+  overflow-y: auto;
+}

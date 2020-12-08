@@ -1,0 +1,3 @@
+<app-search (value)="searchArtists($event)"></app-search>
+
+<app-list [tableDef]="tableDef" [data]="artists$ | async" (select)="goToDetails($event)"></app-list>

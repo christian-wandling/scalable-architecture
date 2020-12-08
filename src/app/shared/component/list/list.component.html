@@ -1,0 +1,45 @@
+<div class="mat-table-container">
+  <mat-table [dataSource]="dataSource">
+    <ng-container *ngFor="let def of tableDef.colDefs; let first = first" cdkColumnDef="{{def.key}}">
+      <mat-header-cell *cdkHeaderCellDef>{{ def.label }}</mat-header-cell>
+      <mat-cell *cdkCellDef="let item">
+
+        <ng-container [ngSwitch]="def.type">
+
+          <span *ngSwitchCase="PropType.Date">{{ item[def.key] | date : dateFormat}}</span>
+
+          <ng-container *ngSwitchCase="PropType.StringArray">
+            <ng-container *ngFor="let str of item[def.key]; let last = last">
+              <span class="no-wrap">{{ str }}</span>
+              <span *ngIf="!last" class="white-space">,&ngsp;</span>
+            </ng-container>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="PropType.ObjectArray">
+            <ng-container *ngFor="let subItem of item[def.key]">
+              <div *ngFor="let prop of (subItem | keyvalue)">
+                <span class="white-space">{{ prop.key }}:&ngsp;</span><span>{{ prop.value }}</span>
+              </div>
+            </ng-container>
+          </ng-container>
+
+          <span *ngSwitchDefault>{{  item[def.key]}} </span>
+
+        </ng-container>
+
+      </mat-cell>
+      <mat-footer-cell *cdkFooterCellDef>
+        <ng-container *ngIf="first">
+          {{dataSource?.data?.length || 'No'}} results
+        </ng-container>
+      </mat-footer-cell>
+    </ng-container>
+
+    <mat-header-row *cdkHeaderRowDef="tableDef.colDefs | pluckKey : 'key'; sticky: true"></mat-header-row>
+    <mat-row *cdkRowDef="let item; columns: tableDef.colDefs | pluckKey : 'key';" (click)="select.emit(item.id)"></mat-row>
+
+    <mat-footer-row *cdkFooterRowDef="tableDef.colDefs | pluckKey : 'key'; sticky: true"
+                    [hidden]="dataSource?.data?.length > 0">
+    </mat-footer-row>
+  </mat-table>
+</div>
