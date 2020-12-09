@@ -15,8 +15,6 @@ import { AppRoutingModule } from '@app/app-routing.module';
 import { reducers, storeConfig } from '@core/_ngrx';
 import { AppEffects } from '@core/_ngrx/app.effects';
 import { HttpClientModule } from '@angular/common/http';
-import { MusicModule } from '@music/music.module';
-import { BookModule } from '@book/book.module';
 
 @NgModule({
   declarations: [
@@ -33,9 +31,7 @@ import { BookModule } from '@book/book.module';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot({ routerState: RouterState.Minimal }),
     EffectsModule.forRoot([ AppEffects ]),
-    NavigationModule,
-    MusicModule,
-    BookModule
+    NavigationModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

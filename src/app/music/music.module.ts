@@ -4,8 +4,6 @@ import { MusicRoutingModule } from './music-routing.module';
 import { MusicFacade } from './music.facade';
 import { MusicHttpService } from '@music/music-http.service';
 import { MusicNormalizrService } from './music-normalizr.service';
-import { ReleaseModule } from '@music/release/release.module';
-import { ArtistModule } from '@music/artist/artist.module';
 
 @NgModule({
   declarations: [],
@@ -16,9 +14,7 @@ import { ArtistModule } from '@music/artist/artist.module';
   providers: [
     MusicFacade,
     MusicHttpService,
-    MusicNormalizrService,
-    ReleaseModule,
-    ArtistModule
+    MusicNormalizrService
   ]
 })
 export class MusicModule {
